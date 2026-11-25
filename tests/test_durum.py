@@ -84,7 +84,7 @@ def test_supurme_yalniz_kendi_eski_dosyalarini_siler(tmp_path):
     d.mkdir()
     kendi = d / "0123456789abcdef.json"
     kendi_tmp = d / ".0123456789abcdef.ab_c12xy.tmp"
-    yabanci = [d / "ayarlar.json", d / "notlar.md", d / "0123456789ABCDEF.json", d / "0123.json"]
+    yabanci = [d / "ayarlar.json", d / "notlar.md", d / "ABCDEF0123456789.json", d / "0123.json"]
     for f in [kendi, kendi_tmp, *yabanci]:
         f.write_text("x", encoding="utf-8")
         os.utime(f, (ESKI, ESKI))
