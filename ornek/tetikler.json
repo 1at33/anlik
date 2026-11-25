@@ -1,0 +1,49 @@
+{
+  "surum": 1,
+  "aciklama": "Örnek tetik haritası. Kaynak yolları bu dosyanın klasörüne göredir (ya da 'kok' alanına). Ayrıntı: README.md",
+  "toplam_maks": 420,
+  "kural_maks": 220,
+  "tetikler": [
+    {
+      "id": "git-toplu-ekleme",
+      "etiket": "git toplu ekleme, sert kural",
+      "arac_regex": "^Bash$",
+      "eslestirici": "git-toplu-ekleme",
+      "karar": "deny",
+      "kaynaklar": [
+        {"dosya": "kural.md", "ankraj": "- Toplu ekleme yok:", "baslangic": "Toplu ekleme yok:", "maks": 260}
+      ]
+    },
+    {
+      "id": "git-push",
+      "etiket": "git push",
+      "ilk_cagri": "engelle",
+      "arac_regex": "^Bash$",
+      "git_alt": ["push"],
+      "kaynaklar": [
+        {"dosya": "kural.md", "ankraj": "- Push öncesi:", "baslangic": "Push öncesi:", "maks": 220}
+      ]
+    },
+    {
+      "id": "disa-giden",
+      "etiket": "dışarıya giden eylem",
+      "ilk_cagri": "engelle",
+      "arac_regex": "^Bash$",
+      "arac_dogrudan": "^mcp__.+__(?:add_\\w*comment|create_(?:issue|pull_request)\\w*|send\\w*|post\\w*|publish\\w*|reply\\w*)$",
+      "komut_regex": "\\bgh\\s+(?:issue|pr)\\s+(?:comment|create|review|merge)\\b|\\bgh\\s+api\\b[^\\n]*(?:-X|--method)\\s*(?:POST|PUT|PATCH|DELETE)|\\bnpm\\s+publish\\b|\\btwine\\s+upload\\b|(?:^|[\\s;&|(])(?:sendmail|mailx?)\\s",
+      "kaynaklar": [
+        {"dosya": "kural.md", "ankraj": "- Dışarıya giden yazı:", "baslangic": "Dışarıya giden yazı:", "maks": 220}
+      ]
+    },
+    {
+      "id": "ozyinelemeli-silme",
+      "etiket": "rm -rf",
+      "ilk_cagri": "bilgi",
+      "arac_regex": "^Bash$",
+      "komut_regex": "(?:^|[\\s;&|(])rm\\s+(?:-\\S*[rR]\\S*|--recursive)\\b|\\b(?:rmdir|rd)\\s+/s\\b|\\bRemove-Item\\b[^|;&]*-Recurse",
+      "kaynaklar": [
+        {"dosya": "kural.md", "ankraj": "- Özyinelemeli silme:", "baslangic": "Özyinelemeli silme:", "maks": 200}
+      ]
+    }
+  ]
+}
