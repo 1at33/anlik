@@ -37,7 +37,7 @@ okuduktan sonra yeniden denerse bu bilinçli bir karardır ve komut geçer.
 ## Kurulum
 
 ```
-pip install anlik            # ya da kaynaktan: pip install -e .
+pip install anlik            # yayımlandığında; şimdilik: pip install -e .
 pip install -e ".[dev]"      # + pytest, ruff
 ```
 
